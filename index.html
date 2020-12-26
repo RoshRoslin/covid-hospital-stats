@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Covid Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Covid-19 Hospital Stats</h1>
+    </header>
+
+    <section id="display-data"></section>
+
+    <section id="place-data">
+      <form action="">
+        <label for="">State:</label>
+        <input type="text" id="state-input" maxlength="2" minlength="2" />
+      </form>
+      <button id="locate-btn">Get Current Covid-19 Data</button>
+    </section>
+  </body>
+</html>
