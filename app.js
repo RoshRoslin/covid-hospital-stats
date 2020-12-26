@@ -1,9 +1,16 @@
 const locationBtn = document.getElementById("locate-btn");
 const sectionDiv = document.getElementById("place-data");
 const stateInput = document.getElementById("state-input");
+const form = document.getElementById("form");
+
+form.addEventListener("submit", getInputData);
+locationBtn.addEventListener("click", getInputData);
 
 // click to submit
-locationBtn.addEventListener("click", (event) => {
+function getInputData(event) {
+  removePreviousData();
+  event.preventDefault();
+
   // make two characters
   if (
     stateInput.value === "" ||
@@ -11,13 +18,11 @@ locationBtn.addEventListener("click", (event) => {
     stateInput.value.length > 2
   ) {
     return;
-  } else if (event.key == "Enter") {
-    console.log("test");
   } else {
     let stateValue = stateInput.value.toLowerCase();
     getCoronaData(stateValue);
   }
-});
+}
 
 //show error
 function showError() {
@@ -52,13 +57,17 @@ function showData(data, stateValue) {
   </div>
 `;
 
+  removePreviousData();
+  locationBtn.insertAdjacentHTML("afterend", dataHTML);
+}
+
+//remove previous Data
+function removePreviousData() {
   if (document.getElementById("alert")) {
     const oldData = document.getElementById("old-data");
-
     oldData.remove();
-    locationBtn.insertAdjacentHTML("afterend", dataHTML);
   } else {
-    locationBtn.insertAdjacentHTML("afterend", dataHTML);
+    return;
   }
 }
 
